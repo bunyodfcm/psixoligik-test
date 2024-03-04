@@ -1,11 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      primary: {
+        900: "#058c42",
+      },
+      secondary: {
+        900: "#dc0873",
+      },
+      white: "#ffffff",
+      black: "#00171f",
+      blue: "#2400ff",
+      green: "#09fe02",
+
+      // ...
+    },
   },
   plugins: [],
-}
+};
