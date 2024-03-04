@@ -11,7 +11,9 @@ export default {
       secondary: {
         900: "#dc0873",
       },
+      borderColor: "#dbdbda",
       white: "#ffffff",
+      red: "#dd0426",
       black: "#00171f",
       blue: "#2400ff",
       green: "#09fe02",
