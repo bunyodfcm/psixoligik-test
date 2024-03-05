@@ -4,7 +4,7 @@ import ShowDetail from "./components/ShowDetail";
 
 const FirstTest = () => {
   const { createDetail, details } = useGetFirstTestContext();
-  console.log(createDetail, details);
+  // console.log(createDetail, details);
   return (
     <div className="w-5/6 mx-auto pt-10">
       <button
