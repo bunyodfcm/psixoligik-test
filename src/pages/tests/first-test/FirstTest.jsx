@@ -13,6 +13,7 @@ const FirstTest = () => {
     setAllAnswerUser,
     setShowAnswer,
     showAnswer,
+    setPause
   } = useGetFirstTestContext();
 
   const startBtn = () => {
@@ -20,6 +21,7 @@ const FirstTest = () => {
       setCounter(0);
       createDetail();
     }
+    setPause(false)
     setShowAnswer(false);
     setAllAnswerUser(Array(8).fill(Array(16).fill(0)));
     setStart(true);

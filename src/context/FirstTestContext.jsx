@@ -82,6 +82,7 @@ const FirstTestContextProvider = ({ children }) => {
         allAnswerUser,
         showAnswer,
         setShowAnswer,
+        setPause
       }}
     >
       {children}
