@@ -1,9 +1,11 @@
 import { useGetFirstTestContext } from "../../../../context/FirstTestContext";
 
 const FinishBtn = () => {
-  const { setStart, start, setCounter } = useGetFirstTestContext();
+  const { setStart, start, setCounter, setShowAnswer } =
+    useGetFirstTestContext();
   const finishButton = () => {
     setCounter(0);
+    setShowAnswer(true);
     setStart(false);
   };
   return (
@@ -16,7 +18,7 @@ const FinishBtn = () => {
       }}
       disabled={!start}
     >
-      Yakunlash
+      Yakunlash va natijani ko'rish
     </button>
   );
 };

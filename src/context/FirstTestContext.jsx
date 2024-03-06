@@ -10,7 +10,10 @@ const FirstTestContextProvider = ({ children }) => {
   const [start, setStart] = useState(false);
   const [detailCount, setDetailCount] = useState(8);
   const [details, setDetails] = useState(null);
-  // const [openQuestion, setOpenQuestion] = useState(false)
+  const [allAnswerUser, setAllAnswerUser] = useState(
+    Array(8).fill(Array(16).fill(0))
+  );
+  const [showAnswer, setShowAnswer] = useState(false);
 
   const [detailCounts, setDetailCounts] = useState([2, 3, 4, 5, 6, 7, 8, 9]);
   const generateRandomNumber = (max) => Math.floor(Math.random() * max);
@@ -42,12 +45,9 @@ const FirstTestContextProvider = ({ children }) => {
   }, [details, counter]);
 
   useEffect(() => {
-    console.log(details, "aaaa");
     let intervalId;
     if (details !== null && counter < detailCount && !pause) {
       intervalId = setInterval(() => {
-        console.log("aa");
-
         setPause(true);
       }, 1000 * 3);
     }
@@ -58,8 +58,9 @@ const FirstTestContextProvider = ({ children }) => {
   const getAnswerUser = (forPaint) => {
     setCounter((prev) => prev + 1);
     setPause(false);
-
-    console.log(forPaint, "a");
+    setAllAnswerUser((prev) =>
+      prev.map((item, i) => (i === counter ? (item = forPaint) : item))
+    );
   };
 
   return (
@@ -77,6 +78,10 @@ const FirstTestContextProvider = ({ children }) => {
         setCounter,
         getAnswerUser,
         pause,
+        setAllAnswerUser,
+        allAnswerUser,
+        showAnswer,
+        setShowAnswer,
       }}
     >
       {children}

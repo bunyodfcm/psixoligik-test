@@ -21,10 +21,14 @@ const PaintDetail = () => {
       <header className="flex justify-between">
         <div>
           <span>
-            {!start ? "Boshlash kutilmoqda ..." : `${counter + 1} - topshiriq`}
+            {!start
+              ? "Boshlash kutilmoqda ..."
+              : counter === 8
+              ? "Barcah javoblar yuborildi"
+              : `${counter + 1} - topshiriq`}
           </span>
         </div>
-        {counter < 7 ? (
+        {counter < 8 ? (
           <button
             className={`border border-borderColor px-4 py-2 text-black font-semibold hover:shadow-sm opacity-80  ${
               start ? "bg-primary-900 text-white" : ""
@@ -32,15 +36,16 @@ const PaintDetail = () => {
             onClick={() => {
               toNextBtn();
             }}
+            disabled={!start}
           >
-            Keyingi
+            Yuburish
           </button>
         ) : (
           <FinishBtn />
         )}
       </header>
       <div className="w-full h-full flex justify-center items-center">
-        {pause ? (
+        {pause && start ? (
           <div className="p-2 border border-black grid grid-cols-4 gap-3">
             {forPaint.map((item, index) => (
               <button
