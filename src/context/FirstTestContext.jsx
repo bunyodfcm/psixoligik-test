@@ -1,83 +1,87 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export const FirstTestContext = createContext();
 
 export function useGetFirstTestContext() {
-    return useContext(FirstTestContext);
+  return useContext(FirstTestContext);
 }
 
 const FirstTestContextProvider = ({ children }) => {
-    const [start, setStart] = useState(false);
-    const [detailCount, setDetailCount] = useState(8);
-    const [details, setDetails] = useState(null);
-    const [showTime, setShowTime] = useState(4);
-    const [answerTime, setAnswerTime] = useState(3);
-    const [passDetail, usePassDetail] = useState(null);
+  const [start, setStart] = useState(false);
+  const [detailCount, setDetailCount] = useState(8);
+  const [details, setDetails] = useState(null);
+  // const [openQuestion, setOpenQuestion] = useState(false)
 
-    const generateRandomNumber = (max) => Math.floor(Math.random() * max);
+  const [detailCounts, setDetailCounts] = useState([2, 3, 4, 5, 6, 7, 8, 9]);
+  const generateRandomNumber = (max) => Math.floor(Math.random() * max);
 
-    console.log(details, 'details');
-
-    const createDetail = () => {
-        setDetails([]);
-        for (let i = 0; i < detailCount; i++) {
-            const innerArray = Array(9).fill(0);
-            const randomIndex1 = generateRandomNumber(9);
-            let randomIndex2 = generateRandomNumber(9);
-
-            while (randomIndex2 === randomIndex1) {
-                randomIndex2 = generateRandomNumber(9);
-            }
-            innerArray[randomIndex1] = 1;
-            innerArray[randomIndex2] = 1;
-
-            setDetails((prev) => [...prev, innerArray]);
+  const createDetail = () => {
+    setDetails([]);
+    detailCounts.forEach((count) => {
+      const innerArray = Array(16).fill(0);
+      for (let i = 0; i < count; i++) {
+        let randomIndex = generateRandomNumber(16);
+        while (innerArray[randomIndex] === 1) {
+          randomIndex = generateRandomNumber(16);
         }
-    };
-    console.log(details);
+        innerArray[randomIndex] = 1;
+      }
+      setDetails((prev) => [...prev, innerArray]);
+    });
+  };
 
-    const [counter, setCounter] = useState(0);
-    const [pause, setPause] = useState(false);
+  const [counter, setCounter] = useState(0);
+  const [pause, setPause] = useState(false);
 
-    const items = useMemo(() => {
-        if (details !== null) {
-            return details[counter];
-        } else {
-            return [];
-        }
-    }, [details, counter]);
+  const items = useMemo(() => {
+    if (details !== null && counter < 8) {
+      return details[counter];
+    } else {
+      return [];
+    }
+  }, [details, counter]);
 
-    console.log(counter, 'counter');
+  useEffect(() => {
+    console.log(details, "aaaa");
+    let intervalId;
+    if (details !== null && counter < detailCount && !pause) {
+      intervalId = setInterval(() => {
+        console.log("aa");
 
-    useEffect(() => {
-        let intervalId;
-        if (details !== null && counter < detailCount - 1 || !pause) {
-            intervalId = setInterval(() => {
-                setCounter((prevCounter) => prevCounter + 1);
-                setPause(true);
-            }, 1000 * 3);
-        }
+        setPause(true);
+      }, 1000 * 3);
+    }
 
-        return () => clearInterval(intervalId);
-    }, [details, counter, pause]);
+    return () => clearInterval(intervalId);
+  }, [details, counter, pause]);
 
-    return (
-        <FirstTestContext.Provider
-            value={{
-                start,
-                setStart,
-                details,
-                setDetails,
-                detailCount,
-                setDetailCount,
-                createDetail,
-                items,
-                counter,
-            }}
-        >
-            {children}
-        </FirstTestContext.Provider>
-    );
+  const getAnswerUser = (forPaint) => {
+    setCounter((prev) => prev + 1);
+    setPause(false);
+
+    console.log(forPaint, "a");
+  };
+
+  return (
+    <FirstTestContext.Provider
+      value={{
+        start,
+        setStart,
+        details,
+        setDetails,
+        detailCount,
+        setDetailCount,
+        createDetail,
+        items,
+        counter,
+        setCounter,
+        getAnswerUser,
+        pause,
+      }}
+    >
+      {children}
+    </FirstTestContext.Provider>
+  );
 };
 
 export default FirstTestContextProvider;
