@@ -46,7 +46,7 @@ const PaintDetail = () => {
       </header>
       <div className="w-full h-full flex justify-center items-center">
         {pause && start ? (
-          <div className="p-2 border border-black grid grid-cols-4 gap-3">
+          <div className="p-2 border border-black grid grid-cols-4 gap-3 bg-white">
             {forPaint.map((item, index) => (
               <button
                 key={index}

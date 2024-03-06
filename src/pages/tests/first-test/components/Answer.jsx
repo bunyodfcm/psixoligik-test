@@ -27,7 +27,7 @@ const Answer = () => {
           {details && allAnswerUser
             ? details.map((item, index) => (
                 <div className="flex gap-4" key={index}>
-                  <div className="p-2 border border-black grid grid-cols-4 gap-3 mb-4">
+                  <div className="p-2 border border-black grid grid-cols-4 gap-3 mb-4 bg-white">
                     {item.map((item, i) => (
                       <div
                         key={i}
@@ -37,7 +37,7 @@ const Answer = () => {
                       ></div>
                     ))}
                   </div>
-                  <div className="p-2 border border-black grid grid-cols-4 gap-3 mb-4">
+                  <div className="p-2 border border-black grid grid-cols-4 gap-3 mb-4 bg-white">
                     {allAnswerUser[index].map((item, i) => (
                       <div
                         key={i}

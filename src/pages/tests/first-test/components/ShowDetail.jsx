@@ -16,7 +16,7 @@ const ShowDetail = () => {
 
       <div className="w-full h-full flex justify-center items-center">
         {items.length && !pause && start ? (
-          <div className="p-2 border border-black grid grid-cols-4 gap-3">
+          <div className="p-2 border border-black grid grid-cols-4 gap-3 bg-white">
             {items.map((item, index) => (
               <div
                 key={index}
