@@ -53,14 +53,11 @@ const FirstTestContextProvider = ({ children }) => {
         let intervalId;
         if (details !== null && counter < detailCount - 1 && !pause) {
             intervalId = setInterval(() => {
-                // Har bir harakatdan so'ng counter ni 1 ga oshirish
                 // setCounter((prevCounter) => prevCounter + 1);
                 setPause(true);
-                console.log('😎😉');
             }, 1000 * 3);
         }
 
-        // Effect tugaganida intervalni to'xtatish
         return () => clearInterval(intervalId);
     }, [details, counter, pause]);
 

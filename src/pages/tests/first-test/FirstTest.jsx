@@ -12,10 +12,10 @@ const FirstTest = () => {
                 Boshlash
             </button>
             <div className='min-h-96 mt-10 border-2 border-borderColor flex justify-between'>
-                <div className='p-10 w-1/2 flex items-center justify-center'>
+                <div className='p-10 w-1/2 '>
                     <ShowDetail />
                 </div>
-                <div className='p-10 w-1/2 border-l-2 border-borderColor flex items-center justify-center'>
+                <div className='p-10 w-1/2 border-l-2 border-borderColor'>
                     <PaintDetail />
                 </div>
             </div>
