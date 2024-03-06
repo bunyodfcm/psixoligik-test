@@ -2,6 +2,21 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      "2xl": { max: "1535px" },
+      xl: { max: "1280px" },
+      lg: { max: "1024px" },
+      md: { max: "767px" },
+      sm: { max: "639px" },
+      xs: { max: "480px" },
+    },
+    container: {
+      center: true,
+      padding: "1rem",
+      screens: {
+        maxWidth: "1280px",
+      },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",

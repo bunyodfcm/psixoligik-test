@@ -31,7 +31,7 @@ const Answer = () => {
                     {item.map((item, i) => (
                       <div
                         key={i}
-                        className={`w-8 h-8 border border-black rounded-full ${
+                        className={`w-8 h-8 sm:w-4 sm:h-4 border border-black rounded-full ${
                           item === 1 ? "bg-black" : ""
                         }`}
                       ></div>
@@ -41,7 +41,7 @@ const Answer = () => {
                     {allAnswerUser[index].map((item, i) => (
                       <div
                         key={i}
-                        className={`w-8 h-8 border border-black rounded-full ${
+                        className={`w-8 h-8 sm:w-4 sm:h-4 border border-black rounded-full ${
                           item === 1 ? "bg-black" : ""
                         }`}
                       ></div>
