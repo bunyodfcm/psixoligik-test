@@ -8,7 +8,7 @@ export function useGetFirstTestContext() {
 
 const FirstTestContextProvider = ({ children }) => {
     const [start, setStart] = useState(false);
-    const [detailCount, setDetailCount] = useState(4);
+    const [detailCount, setDetailCount] = useState(8);
     const [details, setDetails] = useState(null);
     const [showTime, setShowTime] = useState(4);
     const [answerTime, setAnswerTime] = useState(3);
@@ -51,9 +51,9 @@ const FirstTestContextProvider = ({ children }) => {
 
     useEffect(() => {
         let intervalId;
-        if (details !== null && counter < detailCount - 1 && !pause) {
+        if (details !== null && counter < detailCount - 1 || !pause) {
             intervalId = setInterval(() => {
-                // setCounter((prevCounter) => prevCounter + 1);
+                setCounter((prevCounter) => prevCounter + 1);
                 setPause(true);
             }, 1000 * 3);
         }
