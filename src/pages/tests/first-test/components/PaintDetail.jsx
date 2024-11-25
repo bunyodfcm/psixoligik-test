@@ -24,21 +24,20 @@ const PaintDetail = () => {
             {!start
               ? "Boshlash kutilmoqda ..."
               : counter === 8
-              ? "Barcah javoblar yuborildi"
-              : `${counter + 1} - topshiriq`}
+                ? "Barcah javoblar yuborildi"
+                : `${counter + 1} - topshiriq`}
           </span>
         </div>
         {counter < 8 ? (
           <button
-            className={`border border-borderColor px-4 py-2 text-black font-semibold hover:shadow-sm opacity-80  ${
-              start ? "bg-primary-900 text-white" : ""
-            }`}
+            className={`border border-borderColor px-4 py-2 text-black font-semibold hover:shadow-sm opacity-80  ${start ? "bg-primary-900 text-white" : ""
+              }`}
             onClick={() => {
               toNextBtn();
             }}
             disabled={!start}
           >
-            Yuburish
+            Yuborish
           </button>
         ) : (
           <FinishBtn />
@@ -50,9 +49,8 @@ const PaintDetail = () => {
             {forPaint.map((item, index) => (
               <button
                 key={index}
-                className={`w-8 h-8 border border-black rounded-full ${
-                  item === 1 ? "bg-black" : ""
-                }`}
+                className={`w-8 h-8 border border-black rounded-full ${item === 1 ? "bg-black" : ""
+                  }`}
                 onClick={() => {
                   answerUserItem(index);
                 }}
